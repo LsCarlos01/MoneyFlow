@@ -1,0 +1,9 @@
+<h1>Listar Categorias</h1>
+
+<ul>
+{% for catego in categorias %}
+    <h2>{{catego}}</h2>
+{% endfor %}
+
+</ul>
+<a href="{% url 'categoria:cadastrar_categorias' %}">Cadastrar nova Categoria</a>
