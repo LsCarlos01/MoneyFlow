@@ -1,0 +1,11 @@
+<h1>Trasações efuadas</h1>
+
+<ul>
+
+{% for list in transacoes %}
+    <p>{{list}}</p>
+{% endfor  %}
+
+</ul>
+
+<a href="{% url 'adicionar_transacao' %}">Adicionar nova transação</a>

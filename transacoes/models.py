@@ -8,4 +8,4 @@ class Transacoes(models.Model):
     data= models.DateField()
     
     def __str__(self):
-        return f"{self.tipo} - {self.valor} ({self.categoria})" 
+        return f"{self.categoria.tipo} - {self.valor} ({self.categoria})" 
