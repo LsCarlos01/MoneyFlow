@@ -1,0 +1,54 @@
+<h1>Dashboard</h1>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<div class= "gasto_mes">
+    <h3>Total gasto no mês:</h3>
+    <p>R$ {{ total_gasto_mes}}</p>
+</div>
+
+<h2 class="mb-4">Gasto por categoria</h2>
+
+<div style="max-width: 260px;">
+<canvas id="graficoPizza"></canvas>
+</div>
+
+
+<div style="max-width: 260px;">
+    <canvas id="graficoLinha"></canvas>
+</div>
+
+<script>
+    const categorias = {{ categorias|safe }};
+    const valores = {{ valores|safe }};
+
+    const ctxPizza = document.getElementById("graficoPizza");
+
+    new Chart(ctxPizza, {
+        type: "pie",
+        data: {
+            labels: categorias,
+            datasets: [{
+                data: valores,
+                borderWidth: 1
+            }]
+        }
+    });
+    const ctxLinha = document.getElementById('graficoLinha');
+
+    new Chart(ctxLinha, {
+        type: 'line',
+        data: {
+            labels: {{ meses|safe }},
+            datasets: [{
+                label: 'Gastos Mensais',
+                data: {{ totais|safe }},
+                borderWidth: 2,
+                tension: 0.3
+            }]
+        },
+    });
+</script>
+
+
+
