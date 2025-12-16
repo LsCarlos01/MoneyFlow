@@ -1,4 +1,85 @@
 {% extends "base.html" %}
+{% load static %}
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+{% endblock %}
 {% block content %}
-<h1>index<h1>
+  <section class="hero">
+    <div class="hero-text">
+      <h1>
+        CONTROLE SEUS GASTOS <br>
+        DE FORMA SIMPLES
+      </h1>
+
+      <p class="subtitle">
+        Diga onde gastou, quanto gastou e <br>
+        veja seu dinheiro fazer sentido.
+      </p>
+
+      <a href="{% url 'categoria:listar_categorias' %}" class="cta-btn">
+        Classificar gastos
+      </a>
+
+      <p class="cta-description">
+        Escolha uma categoria e registre seus gastos.
+      </p>
+    </div>
+    <div class="hero-image">
+      <!-- Troque o src pela sua imagem -->
+      <img src="{% static 'images/grafico.png' %}" alt="Gráfico de crescimento financeiro">
+    </div>
+
+  </section>
+  <section class="container my-5">
+
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Planeje seus objetivos</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            Clareza financeira
+          </h6>
+          <p class="card-text">
+            Ao organizar seus gastos por categoria, você entende
+            para onde seu dinheiro vai e planeja objetivos com mais segurança.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Evite surpresas no fim do mês</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            Controle mensal
+          </h6>
+          <p class="card-text">
+            Visualize seus gastos ao longo do mês e evite estourar
+            o orçamento sem perceber.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="card h-100 shadow-sm">
+        <div class="card-body">
+          <h5 class="card-title">Decida com base em dados</h5>
+          <h6 class="card-subtitle mb-2 text-body-secondary">
+            Consciência financeira
+          </h6>
+          <p class="card-text">
+            Com tudo registrado, suas decisões deixam de ser no
+            impulso e passam a ser mais conscientes.
+          </p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
 {% endblock %}
