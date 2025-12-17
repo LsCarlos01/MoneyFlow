@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 {% load static %}
 
-
 {% block extra_css %}
     <link rel="stylesheet" href="{% static 'css/categoria.css' %}">
 {% endblock %}
 
-
 {% block content %}
+
 <section class="categoria-container">
     <div class="categoria-card">
         <header class="categoria-header">
-            <h1>Nova Categoria</h1>
-            <p>Crie categorias para organizar melhor suas movimentações</p>
+            <h1>Editar Categoria</h1>
+            <p>Altere a descrição de sua categoria</p>
         </header>
 
 
@@ -39,10 +38,11 @@
 
 
             <div class="form-actions">
-                <button type="submit" class="btn-primary">Salvar categoria</button>
+                <button type="submit" class="btn-primary">Salvar edição</button>
                     <a href="{% url 'categoria:listar_categorias' %}" class="btn-secondary">Cancelar</a>
             </div>
         </form>
     </div>
 </section>
+
 {% endblock %}

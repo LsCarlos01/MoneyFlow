@@ -9,6 +9,8 @@ class Categoria(models.Model):
             ('saida', 'Saída'),
         ]
     )
+    descricao = models.TextField(blank=True)
+   
 
     def __str__(self):
         return f"{self.nome} ({self.tipo})"

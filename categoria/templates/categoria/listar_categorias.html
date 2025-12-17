@@ -1,12 +1,64 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/categoria.css' %}">
+{% endblock %}
+
 {% block content %}
-<h1>Listar Categorias</h1>
 
-<ul>
-{% for catego in categorias %}
-    <p>{{catego}}</p>
-{% endfor %}
+<section class="categories-hero">
+  <div class="categories-text">
+    <h1>
+      SUAS <br>
+      CATEGORIAS
+    </h1>
 
-</ul>
-<a href="{% url 'categoria:cadastrar_categorias' %}">Cadastrar nova Categoria</a>
+    <p class="subtitle">
+      Organize seus gastos criando categorias <br>
+      que fazem sentido para sua realidade.
+    </p>
+
+    <a href="{% url 'categoria:cadastrar_categorias' %}" class="cta-btn">
+      Criar nova categoria
+    </a>
+  </div>
+</section>
+
+<section class="categories-list container my-5">
+  <div class="row g-4">
+
+    {% for catego in categorias %}
+      <div class="col-md-4">
+        <div class="category-card">
+          <h5>{{ catego.nome }}</h5>
+
+          <p>
+            {{ catego.descricao|default:"Use esta categoria para classificar seus gastos de forma organizada." }}
+          </p>
+
+          <div class="card-actions">
+            <a href="#" class="category-link">
+              Ver gastos
+            </a>
+
+            <a href="{% url 'categoria:categoria_edit' catego.id %}" class="category-edit-btn">
+              Editar
+            </a>
+
+            <form method="post" action="{% url 'categoria:categoria_delete' catego.id %}">
+              {% csrf_token %}
+              <button type="submit" class="category-delete-btn" 
+                      onclick="return confirm('Tem certeza que deseja excluir?');">
+                Excluir
+              </button>
+            </form>
+          </div>
+        </div>     
+      </div>
+  {% endfor %}
+
+  </div>
+</section>
+
 {% endblock %}
