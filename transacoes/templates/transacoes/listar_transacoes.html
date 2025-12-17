@@ -1,16 +1,77 @@
 {% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/transacoes.css' %}">
+{% endblock %}
 
 {% block content %}
-<h1>Trasações efuadas</h1>
 
-<ul>
+<section class="transactions-hero">
+  <div class="transactions-text">
+    <h1>
+      SUAS <br>
+      TRANSAÇÕES
+    </h1>
+    <p class="subtitle">
+      Veja quanto você gastou e onde seu dinheiro foi parar
+    </p>
+  </div>
 
-{% for list in transacoes %}
-    <p>{{list}}</p>
-{% endfor  %}
+  <div class="transactions-action">
+    <a href="{% url 'adicionar_transacao' %}" class="btn-add">
+      + Nova transação
+    </a>
+  </div>
+</section>
 
-</ul>
+<section class="transactions-list">
 
-<a href="{% url 'adicionar_transacao' %}">Adicionar nova transação</a>
+  {% if transacoes %}
+    <div class="transactions-grid">
+      {% for transacao in transacoes %}
+        <div class="transaction-card">
+          <div class="transaction-header">
+            <span class="transaction-category">
+                {% if transacao.categoria %}
+                {{ transacao.categoria.nome }}
+                {% else %}
+                Sem categoria
+                {% endif %}
+            </span>
+
+            <span class="transaction-value
+                {% if transacao.categoria and transacao.categoria.tipo == 'entrada' %}
+                entrada
+                {% else %}
+                saida
+                {% endif %}">
+                R$ {{ transacao.valor }}
+            </span>
+          </div>
+
+        <div class="transaction-body">
+            <p class="date">
+              {{ transacao.data }}
+            </p>
+        </div>
+        <div class="transaction-footer">
+            <form action="{% url 'transacoes_delete' transacao.id %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="btn-delete">
+                Excluir
+                </button>
+            </form>
+            </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty-message">
+      Você ainda não registrou nenhuma transação.
+    </p>
+  {% endif %}
+
+</section>
 
 {% endblock %}

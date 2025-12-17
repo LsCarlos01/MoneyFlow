@@ -1,0 +1,282 @@
+/* ===== HERO ===== */
+
+.transactions-hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 3rem 2rem;
+  margin: 0 auto 3rem auto;
+
+  max-width: 1200px;
+
+  background: #f8f9fa;
+  border-radius: 20px;
+}
+
+.transactions-text h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.transactions-text .subtitle {
+  margin-top: 0.6rem;
+  color: #6c757d;
+  font-size: 1rem;
+  max-width: 420px;
+}
+
+.transactions-action .btn-add {
+  background: #004aad;
+  color: #fff;
+  padding: 0.75rem 1.4rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.transactions-action .btn-add:hover {
+  background: #0b5ed7;
+  transform: translateY(-2px);
+}
+
+/* ===== LISTA ===== */
+
+.transactions-list {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem; /* 👈 RESPIRO LATERAL */
+}
+
+.transactions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+  gap: 2rem;
+}
+
+/* ===== CARD ===== */
+
+.transaction-card {
+  background: #ffffff;
+  padding: 1.4rem;
+  border-radius: 18px;
+
+  border: 1px solid #e9ecef;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+
+  transition: all 0.25s ease;
+}
+
+.transaction-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.transaction-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction-title {
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.transaction-value {
+  font-weight: 700;
+  font-size: 1.05rem;
+}
+
+.transaction-value.entrada {
+  color: #198754; /* verde */
+}
+
+.transaction-value.saida {
+  color: #dc3545; /* vermelho */
+}
+.transaction-body {
+  margin-top: 0.8rem;
+}
+
+.transaction-body .category {
+  font-size: 0.95rem;
+  color: #495057;
+}
+
+.transaction-body .date {
+  margin-top: 0.3rem;
+  font-size: 0.8rem;
+  color: #868e96;
+}
+
+/* ===== EMPTY ===== */
+
+.empty-message {
+  text-align: center;
+  color: #6c757d;
+  font-size: 1rem;
+  margin-top: 4rem;
+}
+
+/* ===== RESPONSIVO ===== */
+
+@media (max-width: 768px) {
+  .transactions-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .transactions-text h1 {
+    font-size: 2rem;
+  }
+
+  .transactions-action {
+    width: 100%;
+  }
+
+  .transactions-action .btn-add {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .transactions-list {
+    padding: 0 1rem;
+  }
+
+  .transactions-hero {
+    padding: 2rem 1.5rem;
+  }
+}
+
+
+/* ===== FORMULÁRIO TRANSAÇÃO ===== */
+
+.transacao-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(100vh - 120px);
+  padding: 2rem;
+}
+
+.transacao-card {
+  width: 100%;
+  max-width: 520px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.transacao-header {
+  margin-bottom: 1.8rem;
+}
+
+.transacao-header h1 {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+.transacao-header p {
+  font-size: 0.95rem;
+  color: #6c757d;
+}
+
+/* ===== FORM ===== */
+
+.transacao-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.2rem;
+}
+
+.transacao-form label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  margin-bottom: 0.35rem;
+}
+
+.transacao-form input,
+.transacao-form select {
+  width: 100%;
+  padding: 0.6rem 0.7rem;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  font-size: 0.9rem;
+}
+
+.transacao-form input:focus,
+.transacao-form select:focus {
+  outline: none;
+  border-color: #0d6efd;
+}
+
+/* ===== ACTIONS ===== */
+
+.form-actions {
+  display: flex;
+  gap: 0.8rem;
+  margin-top: 1.6rem;
+}
+
+.btn-primary {
+  flex: 1;
+  padding: 0.6rem;
+  background-color: #004aad;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #1a0f94;
+}
+
+.btn-secondary {
+  flex: 1;
+  padding: 0.6rem;
+  text-align: center;
+  background-color: #e9ecef;
+  color: #212529;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-secondary:hover {
+  background-color: #dee2e6;
+}
+
+.transaction-category {
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #212529;
+}
+
+.transaction-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+
+.btn-delete {
+  background: transparent;
+  border: none;
+  color: #dc3545;
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+}
+
+.btn-delete:hover {
+  text-decoration: underline;
+}

@@ -58,7 +58,7 @@
 .cta-btn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
-  background-color: #4338ca;
+  background-color: #0a60cf;
 }
 
 .cta-btn {
@@ -66,9 +66,6 @@
   color: #fff;
 }
 
-.cta-btn:hover {
-  background-color: #1500fc;
-}
 
 .cta-description {
   margin-top: 0.8rem;
