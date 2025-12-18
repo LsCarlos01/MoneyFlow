@@ -58,10 +58,13 @@
         <div class="transaction-footer">
             <form action="{% url 'transacoes_delete' transacao.id %}" method="POST">
                 {% csrf_token %}
-                <button type="submit" class="btn-delete">
+                <button type="submit" class="btn-delete" onclick="return confirm('Tem certeza que deseja excluir?');">
                 Excluir
                 </button>
             </form>
+            <a href="{% url 'edit_transacao' transacao.id %}"class="category-edit-btn">
+                Editar
+            </a>
             </div>
         </div>
       {% endfor %}

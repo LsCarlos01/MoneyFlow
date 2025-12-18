@@ -67,6 +67,11 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
 
   transition: all 0.25s ease;
+}.transaction-footer {
+  display: flex;
+  justify-content: space-between; /* empurra pros cantos */
+  align-items: center;
+  margin-top: 1rem;
 }
 
 .transaction-card:hover {
@@ -142,6 +147,18 @@
     width: 100%;
     text-align: center;
   }
+}
+.category-edit-btn {
+  background-color: #004aad;
+  color: #fff;
+  padding: 4px 10px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.85rem;
+}
+
+.category-edit-btn:hover {
+  background-color: #0b5ed7;
 }
 
 @media (max-width: 480px) {

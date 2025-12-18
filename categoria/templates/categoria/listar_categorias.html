@@ -38,8 +38,8 @@
           </p>
 
           <div class="card-actions">
-            <a href="#" class="category-link">
-              Ver gastos
+            <a href="{% url 'adicionar_transacao' %}?categoria={{catego.id}}" class="category-link">
+              Nova transação
             </a>
 
             <a href="{% url 'categoria:categoria_edit' catego.id %}" class="category-edit-btn">
