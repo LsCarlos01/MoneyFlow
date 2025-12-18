@@ -1,57 +1,74 @@
 {% extends "base.html" %}
-{% block content %}
-<h1>Dashboard</h1>
+{% load static %}
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-<div class= "gasto_mes">
-    <h3>Total gasto no mês:</h3>
-    <p>R$ {{ total_gasto_mes}}</p>
-</div>
-
-<h2 class="mb-4">Gasto por categoria</h2>
-
-<div style="max-width: 260px;">
-<canvas id="graficoPizza"></canvas>
-</div>
-
-
-<div style="max-width: 260px;">
-    <canvas id="graficoLinha"></canvas>
-</div>
-
-<script>
-    const categorias = {{ categorias|safe }};
-    const valores = {{ valores|safe }};
-
-    const ctxPizza = document.getElementById("graficoPizza");
-
-    new Chart(ctxPizza, {
-        type: "pie",
-        data: {
-            labels: categorias,
-            datasets: [{
-                data: valores,
-                borderWidth: 1
-            }]
-        }
-    });
-    const ctxLinha = document.getElementById('graficoLinha');
-
-    new Chart(ctxLinha, {
-        type: 'line',
-        data: {
-            labels: {{ meses|safe }},
-            datasets: [{
-                label: 'Gastos Mensais',
-                data: {{ totais|safe }},
-                borderWidth: 2,
-                tension: 0.3
-            }]
-        },
-    });
-</script>
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
 {% endblock %}
 
+{% block content %}
+<section class="dashboard">
 
+    <header class="dashboard-header">
+        <h1>Dashboard</h1>
+        <p class="subtitle">Visão geral das suas finanças</p>
+    </header>
 
+    <!-- Cards resumo -->
+    <div class="dashboard-cards">
+        <div class="dashboard-card negative">
+            <span class="card-label">Gasto no mês</span>
+            <strong>R$ {{ total_gasto_mes }}</strong>
+        </div>
+
+        <div class="dashboard-card positive">
+            <span class="card-label">Recebido no mês</span>
+            <strong>R$ {{ total_entrada_mes }}</strong>
+        </div>
+
+        <div class="dashboard-card balance">
+            <span class="card-label">Saldo do mês</span>
+            <strong>R$ {{ saldo_mes }}</strong>
+        </div>
+        </div>
+
+        <!-- Gráficos -->
+        <div class="dashboard-charts">
+        <div class="chart-card">
+            <h2>Gastos por categoria</h2>
+
+            <div class="chart-container">
+                <canvas id="graficoPizza"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-card">
+            <h2>Evolução mensal dos gastos</h2>
+
+            <div class="chart-container">
+                <canvas id="graficoLinha"></canvas>
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'js/graficos.js' %}"></script>
+
+<script>
+    criarGraficoPizza(
+        "graficoPizza",
+        {{ categorias|safe }},
+        {{ valores|safe }}
+    );
+
+    criarGraficoLinha(
+        "graficoLinha",
+        {{ meses|safe }},
+        {{ totais|safe }},
+        "Gastos Mensais"
+    );
+</script>
+{% endblock %}
