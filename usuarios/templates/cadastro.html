@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/usuarios.css' %}">
+{% endblock %}
+
+{% block content %}
+<section class="login-container">
+
+  <div class="login-card">
+    <h1>Organize sua vida financeira</h1>
+    <p class="subtitle">Acesse sua conta para continuar</p>
+
+    {% if messages %}
+      {% for message in messages %}
+        <div class="alert {{ message.tags }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+
+    <form method="post">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="username">Usuário</label>
+        <input type="text" name="username" id="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+        <input type="email" name="email" id="email" required>
+      </div>
+
+      <div class="form-group">
+        <label for="senha">Senha</label>
+        <input type="password" name="senha" id="senha" required>
+      </div>
+
+      <button type="submit" class="btn-login">Cadastrar</button>
+    </form>
+    
+    <p class="register-link">
+    Já tem conta?
+    <a href="{% url 'login' %}">Entrar</a>
+    </p>
+    
+  </div>
+
+</section>
+{% endblock %}

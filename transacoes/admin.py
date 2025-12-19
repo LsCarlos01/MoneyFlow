@@ -1,3 +1,7 @@
 from django.contrib import admin
+from .models import Transacoes
 
-# Register your models here.
+@admin.register(Transacoes)
+class TransacaoAdmin(admin.ModelAdmin):
+    list_display = ('valor', 'user', 'categoria')
+    list_filter = ('user', 'categoria')

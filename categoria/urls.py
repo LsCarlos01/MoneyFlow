@@ -3,8 +3,6 @@ from .views import *
 
 app_name = 'categoria'
 
-
-
 urlpatterns = [
     path('', listar_categorias, name='listar_categorias'),
     path('cadastrar/', cadastrar_categorias, name='cadastrar_categorias'),

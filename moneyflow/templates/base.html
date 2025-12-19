@@ -41,10 +41,51 @@
                             <a class="nav-link" href="{% url 'dashboard' %}">Extrato</a>
                         </li>
                         <li class="nav-item px-3 px-lg-0 py-1 py-lg-4 dropdown">
-                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Páginas</a>
+                           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Perfil</a>
                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{% url 'categoria:cadastrar_categorias' %}">Nova Categoria</a></li>
-                                <li><a class="dropdown-item" href="{% url 'adicionar_transacao' %}">Nova Transacão</a></li>
+                                <li>
+                                    <a class="dropdown-item">
+                                        {% if user.is_authenticated %}
+                                        {{ user.username }}
+                                        {% else %}
+                                        Perfil
+                                        {% endif %}
+                                    </a>
+                                </li>
+                                 {% if user.is_authenticated %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'dashboard' %}">
+                                    Meu painel
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'categoria:listar_categorias' %}">
+                                    Minhas categorias
+                                    </a>
+                                </li>
+
+                                <li><hr class="dropdown-divider"></li>
+
+                                <li>
+                                    <a class="dropdown-item text-danger" href="{% url 'logout' %}">
+                                    Sair
+                                    </a>
+                                </li>
+
+                                {% else %}
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'login' %}">
+                                    Entrar
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a class="dropdown-item" href="{% url 'cadastro' %}">
+                                    Criar conta
+                                    </a>
+                                </li>
+                                {% endif %}
                            </ul>
                         </li>
                     </ul>

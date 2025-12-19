@@ -1,14 +1,17 @@
 from django.shortcuts import render
 from .services import *
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def dashboard(request):
-    total_gasto_mes = total_gasto_no_mes()
-    total_entrada_mes = total_entrada_no_mes()
-    saldo_mes = saldo_do_mes()
+    user = request.user
 
-    dados_categorias = total_gasto_por_categoria()
-    meses, totais = evolucao_mensal()
+    total_gasto_mes = total_gasto_no_mes(user)
+    total_entrada_mes = total_entrada_no_mes(user)
+    saldo_mes = saldo_do_mes(user)
+
+    dados_categorias = total_gasto_por_categoria(user)
+    meses, totais = evolucao_mensal(user)
 
     categorias = [item["categoria__nome"] for item in dados_categorias]
     valores = [float(item["total"]) for item in dados_categorias]
